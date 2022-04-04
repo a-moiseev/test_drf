@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+
+from videos.views import UploadVideo
+
+router = routers.DefaultRouter()
+router.register(r'upload', UploadVideo)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
