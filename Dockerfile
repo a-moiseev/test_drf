@@ -4,5 +4,7 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY . .
+RUN python manage.py makemigrations ; python manage.py migrate ; \
+    python manage.py makemigrations videos ; python manage.py migrate videos
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

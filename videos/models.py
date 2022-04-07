@@ -1,4 +1,6 @@
 from django.db import models
+import hashlib
+
 
 class Video(models.Model):
     title = models.CharField(max_length=512)
@@ -8,3 +10,11 @@ class Video(models.Model):
 
     class Meta:
         ordering = ['date']
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            hash_md5 = hashlib.md5()
+            for chunk in self.file.chunks():
+                hash_md5.update(chunk)
+            self.md5 = hash_md5.hexdigest()
+        super(Video, self).save(*args, **kwargs)
