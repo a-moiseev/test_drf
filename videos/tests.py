@@ -4,9 +4,9 @@ from .models import Video
 from django.core.files import File
 from django.conf import settings
 
+
 class VideoTest(TestCase):
     def setUp(self):
-
         path = Path(settings.BASE_DIR) / "videos/test_file/test.avi"
         f = open(path, 'rb')
         file = File(f, name=path.name)
