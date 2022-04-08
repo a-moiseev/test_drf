@@ -13,5 +13,8 @@ class VideoTest(TestCase):
         v = Video.objects.create(title="VideoTest", file=file)
 
     def test(self):
+        """
+        Тестирование совпадения md5 загруженного файла
+        """
         video_test = Video.objects.get(title="VideoTest")
         self.assertEqual(video_test.md5, "26f4620de01969656a5dd2906937eb7e")

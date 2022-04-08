@@ -12,6 +12,9 @@ class Video(models.Model):
         ordering = ['date']
 
     def save(self, *args, **kwargs):
+        """
+        Расчет md5 при загрузке файла
+        """
         if not self.pk:
             hash_md5 = hashlib.md5()
             for chunk in self.file.chunks():

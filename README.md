@@ -3,8 +3,8 @@
 Запуск проекта:
 
 ```
-docker build -t drf
-docker run drf -p 8000:8000
+docker build . -t drf
+docker run -p 8000:8000 drf
 ```
 
 Загрузка файла:
